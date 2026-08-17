@@ -1,7 +1,13 @@
-public class Main
+import Controller.MenuController;
+
+public class Main 
 {
-    public static void main(String[] args)
+    public static void main(String[] args) 
     {
-        System.out.println("Hello World");
+        // Instantiate the controller
+        MenuController app = new MenuController();
+        
+        // Start the application loop
+        app.start();
     }
 }
