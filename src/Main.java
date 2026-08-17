@@ -6,7 +6,6 @@ public class Main
     {
         // Instantiate the controller
         MenuController app = new MenuController();
-        
         // Start the application loop
         app.start();
     }
