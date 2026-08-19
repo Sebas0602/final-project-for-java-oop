@@ -2,13 +2,15 @@ package Model;
 
 public class Student 
 {
-    private String id;
+    private int id;
     private String name;
     private String major;
     private double gpa;
     private String classification;
 
-    public Student(String id, String name, String major, double gpa, String classification) 
+    // Create private attributes 
+
+    public Student(int id, String name, String major, double gpa, String classification) 
     {
         this.id = id;
         this.name = name;
@@ -16,9 +18,10 @@ public class Student
         this.gpa = gpa;
         this.classification = classification;
     }
+    //Constructor for creating a student 
 
     // Getters
-    public String getId()
+    public int getId()
     { 
         return id; 
     }
@@ -40,6 +43,11 @@ public class Student
     }
 
     // Setters
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
     public void setMajor(String major) 
     { 
         this.major = major; 
@@ -53,9 +61,10 @@ public class Student
         this.classification = classification; 
     }
 
+    // Format the input into a simple row
     @Override
     public String toString() 
     {
-        return String.format("ID: %-10s | Name: %-18s | Major: %-12s | GPA: %-4.2f | Class: %s", id, name, major, gpa, classification);
+        return "ID: " + id + " |" + " Name: "  + name + " |" + " Major: " + major + " |" + " GPA: " + gpa + " |" + " Class: " + classification + " |";
     }
 }

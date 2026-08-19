@@ -1,6 +1,6 @@
 package Database;
 
-import Model.Student;
+import Model.*;
 import java.sql.*;
 
 public class Database extends DatabaseHandler
@@ -54,7 +54,7 @@ public class Database extends DatabaseHandler
 			{
                 hasRecords = true;
                 // Extract data from the database
-                String id = rs.getString("id");
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String major = rs.getString("major");
                 double gpa = rs.getDouble("gpa");
@@ -82,23 +82,24 @@ public class Database extends DatabaseHandler
 
     public void addStudent(Student student) 
 	{
-        String query = String.format("INSERT INTO Students (id, name, major, gpa, classification) VALUES ('%s', '%s', '%s', %f, '%s')",
-                student.getId(), student.getName(), student.getMajor(), student.getGpa(), student.getClassification());
+        String query = String.format("INSERT INTO Students (id, name, major, gpa, classification) VALUES (%d, '%s', '%s', %f, '%s')",
+        student.getId(), student.getName(), student.getMajor(), student.getGpa(), student.getClassification());
         updateDatabase(query);
         System.out.println("Student added successfully.");
     }
 
-    public void updateStudent(String id, String newMajor, double newGpa) 
+    public void updateStudent(int id, String newMajor, double newGpa) 
 	{
-        String query = String.format("UPDATE Students SET major = '%s', gpa = %f WHERE id = '%s'", newMajor, newGpa, id);
+        String query = String.format("UPDATE Students SET major = '%s', gpa = %f WHERE id = %d", newMajor, newGpa, id);
         updateDatabase(query);
         System.out.println("Student updated successfully.");
     }
 
-    public void deleteStudent(String id) 
+    public void deleteStudent(int id) 
 	{
-        String query = String.format("DELETE FROM Students WHERE id = '%s'", id);
+        String query = ("DELETE FROM Students WHERE id = " + id);
         updateDatabase(query);
+        System.out.println();
         System.out.println("Student deleted successfully.");
     }
 }
